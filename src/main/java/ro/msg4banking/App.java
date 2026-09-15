@@ -1,10 +1,10 @@
-package ro.kindjozsef;
+package ro.msg4banking;
 
 import java.util.concurrent.Callable;
 import picocli.CommandLine;
 
 @CommandLine.Command(
-    name = "new-cli-app",
+    name = "alfred",
     mixinStandardHelpOptions = true,
     versionProvider = App.ManifestVersion.class,
     description = "Do something")
@@ -28,7 +28,7 @@ public class App implements Callable<Integer> {
   static class ManifestVersion implements CommandLine.IVersionProvider {
     public String[] getVersion() {
       String v = App.class.getPackage().getImplementationVersion();
-      return new String[] {"new-cli-app " + (v == null ? "dev" : v)};
+      return new String[] {"alfred " + (v == null ? "dev" : v)};
     }
   }
 

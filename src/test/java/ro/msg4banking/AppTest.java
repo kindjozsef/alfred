@@ -1,4 +1,4 @@
-package ro.kindjozsef;
+package ro.msg4banking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,6 +16,6 @@ class AppTest {
     int test = 1;
     int code = new CommandLine(new App()).setOut(new PrintWriter(out)).execute("--help");
     assertEquals(0, code);
-    assertTrue(out.toString().contains("new-cli-app"));
+    assertTrue(out.toString().contains("alfred"));
   }
 }

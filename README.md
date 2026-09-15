@@ -1,15 +1,4 @@
-# new-cli-app
-
-A starter template for building command-line applications in Java with Gradle.
-
-
-# Getting started
-
-Clone the template, then rename the bits that identify the project:
-- rootProject.name in settings.gradle.kts
-- the ro.kindjozsef package under src/main/java and src/test/java
-- mainClass and archiveBaseName in build.gradle.kts
-- @Command(name = ...) in App.java
+# alfred
 
 # The version catalog
 All dependency and plugin versions live in gradle/libs.versions.toml. The build file then refers to them symbolically:

@@ -36,16 +36,16 @@ java {
 }
 
 application {
-    mainClass = "ro.kindjozsef.App"
+    mainClass = "ro.msg4banking.App"
 }
 
 tasks.shadowJar {
-    archiveBaseName = "new-cli-app"
+    archiveBaseName = "alfred"
     archiveClassifier = ""
     mergeServiceFiles()
     manifest {
         attributes(
-            "Implementation-Title" to "new-cli-app",
+            "Implementation-Title" to "alfred",
             "Implementation-Version" to project.version,
         )
     }
