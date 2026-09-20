@@ -1,12 +1,12 @@
 package ro.msg4banking;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Test;
 import ro.msg4banking.gateway.Config;
 import ro.msg4banking.gateway.LlmClient;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @WireMockTest
 class AgentMemoryTest {
