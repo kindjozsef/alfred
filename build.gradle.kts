@@ -15,6 +15,8 @@ repositories {
 dependencies {
     implementation(libs.picocli)
     annotationProcessor(libs.picocli.codegen)
+    implementation(libs.spring.web)
+    implementation(libs.jackson.databind)
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)

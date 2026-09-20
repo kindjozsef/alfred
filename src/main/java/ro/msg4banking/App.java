@@ -2,26 +2,23 @@ package ro.msg4banking;
 
 import java.util.concurrent.Callable;
 import picocli.CommandLine;
+import ro.msg4banking.gateway.Config;
+import ro.msg4banking.gateway.LlmClient;
 
 @CommandLine.Command(
     name = "alfred",
     mixinStandardHelpOptions = true,
     versionProvider = App.ManifestVersion.class,
-    description = "Do something")
+    description = "A tiny coding agent that works on the project in --workdir.")
 public class App implements Callable<Integer> {
-  @CommandLine.Parameters(index = "0", description = "The file to be processed")
-  private java.io.File file;
 
-  @CommandLine.Option(
-      names = {"-n", "--count"},
-      description = "Number of repetitions.")
-  private int count = 1;
+  @CommandLine.Parameters(index = "0", description = "What you want to ask alfred.")
+  private String task;
 
   @Override
   public Integer call() {
-    for (int i = 0; i < count; i++) {
-      System.out.println(("processing: ") + file);
-    }
+    Agent agent = new Agent(new LlmClient(Config.load()));
+    System.out.println(agent.ask(task));
     return 0;
   }
 
