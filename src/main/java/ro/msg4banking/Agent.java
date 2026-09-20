@@ -29,6 +29,7 @@ public class Agent {
     history.add(Message.user(question));
     Message answer = llm.chat(history, tools);
     history.add(answer);
+    // Step 4: if the answer has tool calls, run the tool and add the result to the history
     return answer.content();
   }
 
