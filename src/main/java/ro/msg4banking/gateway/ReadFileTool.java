@@ -1,5 +1,7 @@
 package ro.msg4banking.gateway;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +42,11 @@ public class ReadFileTool implements Tool {
 
   @Override
   public String execute(String arguments) {
-    throw new UnsupportedOperationException(
-        "Step 4: parse the arguments with JSON.readValue(arguments, Arguments.class),"
-            + " read the file from the workdir and return its content."
-            + " If the file cannot be read, return an error message instead of throwing");
+    Arguments args = JSON.readValue(arguments, Arguments.class);
+    try {
+      return Files.readString(workdir.resolve(args.path()));
+    } catch (IOException e) {
+      return "Error: cannot read " + args.path();
+    }
   }
 }

@@ -2,9 +2,8 @@ package ro.msg4banking.gateway.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ro.msg4banking.gateway.ToolCall;
-
 import java.util.List;
+import ro.msg4banking.gateway.ToolCall;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record Message(

@@ -29,13 +29,26 @@ public class Agent {
     history.add(Message.user(question));
     Message answer = llm.chat(history, tools);
     history.add(answer);
-    // Step 4: if the answer has tool calls, run the tool and add the result to the history
+    while (answer.hasToolCalls()) {
+      for (ToolCall call : answer.toolCalls()) {
+        history.add(runTool(call));
+      }
+      answer = llm.chat(history, tools);
+      history.add(answer);
+    }
     return answer.content();
   }
 
   private Message runTool(ToolCall call) {
-    throw new UnsupportedOperationException(
-        "Step 4: find the tool by name, execute it with the arguments"
-            + " and return Message.tool(call.id(), result)");
+    String name = call.function().name();
+    String arguments = call.function().arguments();
+    System.out.println("[tool] " + name + " " + arguments);
+    String result =
+        tools.stream()
+            .filter(tool -> tool.name().equals(name))
+            .findFirst()
+            .map(tool -> tool.execute(arguments))
+            .orElse("Error: unknown tool " + name);
+    return Message.tool(call.id(), result);
   }
 }
