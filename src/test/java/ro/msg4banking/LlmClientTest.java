@@ -1,16 +1,15 @@
 package ro.msg4banking;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import ro.msg4banking.gateway.Config;
 import ro.msg4banking.gateway.LlmClient;
 import ro.msg4banking.gateway.vo.Message;
-
-import java.util.List;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest
 class LlmClientTest {

@@ -1,9 +1,8 @@
 package ro.msg4banking;
 
-import tools.jackson.databind.json.JsonMapper;
-
 import java.util.List;
 import java.util.Map;
+import tools.jackson.databind.json.JsonMapper;
 
 final class LlmResponses {
 
