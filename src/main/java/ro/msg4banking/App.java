@@ -27,7 +27,8 @@ public class App implements Callable<Integer> {
 
   @Override
   public Integer call() {
-    List<Tool> tools = List.of(new ListFilesTool(workdir), new ReadFileTool(workdir));
+    List<Tool> tools =
+        List.of(new ListFilesTool(workdir), new ReadFileTool(workdir), new WriteFileTool(workdir));
     Agent agent = new Agent(new LlmClient(Config.load()), tools);
     if (task != null) {
       System.out.println(agent.ask(task));

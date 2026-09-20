@@ -1,5 +1,7 @@
 package ro.msg4banking.gateway;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -42,8 +44,14 @@ public class WriteFileTool implements Tool {
 
   @Override
   public String execute(String arguments) {
-    throw new UnsupportedOperationException(
-        "Step 5: write the content to the file (create missing folders too)"
-            + " and return a short confirmation");
+    Arguments args = JSON.readValue(arguments, Arguments.class);
+    Path file = workdir.resolve(args.path());
+    try {
+      Files.createDirectories(file.getParent());
+      Files.writeString(file, args.content());
+      return "Wrote " + args.path();
+    } catch (IOException e) {
+      return "Error: cannot write " + args.path();
+    }
   }
 }
