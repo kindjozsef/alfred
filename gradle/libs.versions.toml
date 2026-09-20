@@ -6,6 +6,7 @@ shadow = "9.6.1"
 spotless = "8.10.2"
 versionCatalogUpdate = "1.1.1"
 spring = "7.0.2"
+wiremock = "3.13.1"
 
 [libraries]
 jackson-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson" }
@@ -14,6 +15,7 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
 picocli-codegen = { module = "info.picocli:picocli-codegen", version.ref = "picocli" }
 spring-web = { module = "org.springframework:spring-web", version.ref = "spring" }
+wiremock = { module = "org.wiremock:wiremock-standalone", version.ref = "wiremock" }
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }

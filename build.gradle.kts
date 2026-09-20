@@ -17,6 +17,7 @@ dependencies {
     annotationProcessor(libs.picocli.codegen)
     implementation(libs.spring.web)
     implementation(libs.jackson.databind)
+    testImplementation(libs.wiremock)
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
