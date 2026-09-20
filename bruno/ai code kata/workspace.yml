@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "ai code kata"
+  type: workspace
+
+collections:
+  - name: "code kata"
+    path: "collections/code kata"
+
+specs:
+
+docs: ''

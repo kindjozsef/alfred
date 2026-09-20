@@ -1,0 +1,9 @@
+name: openai
+variables:
+  - name: baseUrl
+    value: https://api.openai.com/v1
+  - name: model
+    value: gpt-4o-mini
+  - secret: true
+    name: apiKey
+    description: ""

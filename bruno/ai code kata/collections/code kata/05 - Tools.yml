@@ -1,0 +1,41 @@
+info:
+  name: 05 - Tools
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/chat/completions"
+  body:
+    type: json
+    data: |-
+      {
+        "model": "{{model}}",
+        "messages": [
+          { "role": "user", "content": "Refactor the calculateTotal in the OrderService.java" }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "read_file",
+              "description": "It reads the entire contents of a file from the project. Always read the file before modifying it or giving an opinion about it! The path is relative to the project root e.g. src/main/java/shop/OrderService.java",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": { "type": "string", "description": "Relative path from the project root" }
+                },
+                "required": ["path"]
+              }
+            }
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

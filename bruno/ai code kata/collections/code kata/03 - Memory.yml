@@ -1,0 +1,36 @@
+info:
+  name: 03 - Memory
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/chat/completions"
+  body:
+    type: json
+    data: |-
+      {
+        "model": "{{model}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Hi! I am Hans."
+          },
+          {
+            "role": "assistant",
+            "content": "Hello Hans! Nice to meet you. How can I assist you today? Whether you have questions, need information, or want to discuss a particular topic, feel free to let me know."
+          },
+          {
+            "role": "user",
+            "content": "Who am I?"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

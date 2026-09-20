@@ -1,0 +1,25 @@
+info:
+  name: 01 - Chat
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/chat/completions"
+  body:
+    type: json
+    data: |-
+      {
+        "model": "{{model}}",
+        "messages": [
+          { "role": "user", "content": "Hi! My name is Juergen!" }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

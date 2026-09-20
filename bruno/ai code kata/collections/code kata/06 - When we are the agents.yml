@@ -1,0 +1,61 @@
+info:
+  name: 06 - When we are the agents
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{baseUrl}}/chat/completions"
+  body:
+    type: json
+    data: |-
+      {
+        "model": "{{model}}",
+        "messages": [
+          { "role": "user", "content": "Refactor the calculateTotal in the OrderService.java" },
+          {
+              "role": "assistant",
+              "content": "To refactor the `calculateTotal` method in `OrderService.java`, I first need to see the current implementation of this method. Let's read the contents of `src/main/java/shop/OrderService.java` to take a look at it.\n",
+              "tool_calls": [
+                {
+                  "id": "f5oqLpHG9lGwrLX42ke5wCz2yxkKxCdE",
+                  "index": 0,
+                  "type": "function",
+                  "function": {
+                    "name": "read_file",
+                    "arguments": "{\"path\":\"src/main/java/shop/OrderService.java\"}"
+                  }
+                }
+              ]
+            },
+          {
+            "role": "tool",
+            "tool_call_id": "f5oqLpHG9lGwrLX42ke5wCz2yxkKxCdE",
+            "content": "package shop;\n\npublic class OrderService {\n    public double calculateTotal(Order order) {\n        double total = 0;\n        for (Item i : order.getItems()) {\n            total += i.getPrice() * i.getQty();\n        }\n        if (order.getCustomer().getType() == 2 && total > 500) {\n            total = total - total * 0.15;\n        }\n        if (order.getCustomer().getType() == 3) {\n            total = total - total * 0.05;\n        }\n        return Math.round(total * 100.0) / 100.0;\n    }\n}"
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "read_file",
+              "description": "It reads the entire contents of a file from the project. Always read the file before modifying it or giving an opinion about it! The path is relative to the project root e.g. src/main/java/shop/OrderService.java",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "path": { "type": "string", "description": "Relative path from the project root" }
+                },
+                "required": ["path"]
+              }
+            }
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

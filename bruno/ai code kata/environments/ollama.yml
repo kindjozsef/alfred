@@ -1,0 +1,8 @@
+name: ollama
+variables:
+  - name: baseUrl
+    value: http://localhost:11434/v1
+  - name: model
+    value: qwen2.5:7b
+  - secret: true
+    name: apiKey
