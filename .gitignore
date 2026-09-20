@@ -35,3 +35,6 @@ build
 !gradle/wrapper/gradle-wrapper.jar
 
 .idea
+
+# Ignore llm.properties
+llm.properties
