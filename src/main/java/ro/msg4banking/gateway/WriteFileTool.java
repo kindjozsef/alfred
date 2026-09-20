@@ -1,10 +1,9 @@
 package ro.msg4banking.gateway;
 
-import tools.jackson.databind.json.JsonMapper;
-
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import tools.jackson.databind.json.JsonMapper;
 
 public class WriteFileTool implements Tool {
 
