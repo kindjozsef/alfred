@@ -12,13 +12,18 @@ public class Repl {
   }
 
   public void run(Scanner in, PrintStream out) {
-
-    //In an infinite loop
-    // read the line: if it is "exit" or empty then break the loop
-    // otherwise, ask the agent and print the answer
-    // you can use in.nextLine() to read a line and out.println() to print a line
-
-    throw new UnsupportedOperationException(
-        "Step 3: read a line, ask the agent, print the answer, repeat until 'exit'");
+    while (true) {
+      out.print("> ");
+      if (!in.hasNextLine()) {
+        return;
+      }
+      String line = in.nextLine().trim();
+      if (line.equals("exit")) {
+        return;
+      }
+      if (!line.isEmpty()) {
+        out.println(agent.ask(line));
+      }
+    }
   }
 }
