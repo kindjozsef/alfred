@@ -23,13 +23,18 @@ public class LlmClient {
     this.config = config;
   }
 
-  public Message chat(List<Message> messages) {
+  public Message chat(List<Message> messages, List<Tool> tools) {
+    ChatRequest request =
+        new ChatRequest(
+            config.model(),
+            messages,
+            tools.isEmpty() ? null : tools.stream().map(Tool::definition).toList());
     ChatResponse response =
         http.post()
             .uri(config.baseUrl() + "/chat/completions")
             .header("Authorization", "Bearer " + config.apiKey())
             .contentType(MediaType.APPLICATION_JSON)
-            .body(new ChatRequest(config.model(), messages))
+            .body(request)
             .retrieve()
             .body(ChatResponse.class);
     return response.choices().getFirst().message();

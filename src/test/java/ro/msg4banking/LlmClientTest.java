@@ -19,7 +19,7 @@ class LlmClientTest {
     stubFor(post("/chat/completions").willReturn(okJson(LlmResponses.text("Hello!"))));
     LlmClient llm = new LlmClient(new Config(wm.getHttpBaseUrl(), "test-key", "test-model"));
 
-    Message answer = llm.chat(List.of(Message.user("Hi")));
+    Message answer = llm.chat(List.of(Message.user("Hi")), List.of());
 
     assertEquals("Hello!", answer.content());
     verify(
