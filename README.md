@@ -19,13 +19,18 @@ and a couple of loops. At the end alfred can read and change the files of a proj
 
 The tests use WireMock instead of a real model, so they need no API key and no network.
 
-
 ## Running
 
 ```shell
-./gradlew run -q --args="'What is a record in Java?'"
+# Build the new JAR (linux/macOS)
+./gradlew shadowJar
+# Windows
+gradlew.bat shadowJar
+# Run the JAR with a question
+java -jar build/libs/alfred.jar "'What is a record in Java?'"
+# From step 2 on running it without a question starts an interactive session:
+java -jar build/libs/alfred.jar
 ```
-From step 2 on, `./gradlew run -q` starts an interactive session.
 
 ## The kata
 
@@ -81,7 +86,7 @@ Tests: `ReadFileToolTest`, `AgentToolLoopTest`
 Implement `WriteFileTool.execute`. Now alfred can refactor:
 
 ```shell
-./gradlew run -q --args="'Replace the magic numbers in the refactor with named constants.'"
+java -jar build/libs/alfred.jar "'Replace the magic numbers in the refactor with named constants.'"
 ```
 
 Test: `WriteFileToolTest`
@@ -109,20 +114,7 @@ The Shadow plugin packages the application together with all of its runtime depe
 ./gradlew shadowJar
 ```
 
-The output lands in `build/libs/new-cli-app.jar`:
+The output lands in `build/libs/alfred.jar`:
 ```shell
-java -jar build/libs/new-cli-app.jar --help
-```
-
-# Running this application
-
-## Development
-```shell
-./gradlew run --args="input.txt -n 3 --verbose"
-```
-
-## From the packaged JAR
-```shell
-./gradlew shadowJar
-java -jar build/libs/new-cli-app.jar input.txt -n 3 --verbose
+java -jar build/libs/alfred.jar --help
 ```
