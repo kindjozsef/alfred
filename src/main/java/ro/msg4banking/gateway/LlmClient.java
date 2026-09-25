@@ -8,6 +8,7 @@ import org.springframework.web.client.RestClient;
 import ro.msg4banking.gateway.vo.ChatRequest;
 import ro.msg4banking.gateway.vo.ChatResponse;
 import ro.msg4banking.gateway.vo.Message;
+import ro.msg4banking.gateway.vo.ModelResponse;
 
 public class LlmClient {
 
@@ -33,5 +34,13 @@ public class LlmClient {
             .retrieve()
             .body(ChatResponse.class);
     return response.choices().getFirst().message();
+  }
+
+  public ModelResponse models() {
+    return http.get()
+        .uri(config.baseUrl() + "/models")
+        .header("Authorization", "Bearer " + config.apiKey())
+        .retrieve()
+        .body(ModelResponse.class);
   }
 }
