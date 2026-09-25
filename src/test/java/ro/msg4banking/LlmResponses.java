@@ -16,8 +16,8 @@ final class LlmResponses {
 
   static String toolCall(String id, String name, String arguments) {
     Map<String, Object> call =
-      Map.of(
-        "id", id, "type", "function", "function", Map.of("name", name, "arguments", arguments));
+        Map.of(
+            "id", id, "type", "function", "function", Map.of("name", name, "arguments", arguments));
     return response(Map.of("role", "assistant", "tool_calls", List.of(call)));
   }
 
