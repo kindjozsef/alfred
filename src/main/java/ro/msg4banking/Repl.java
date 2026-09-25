@@ -13,7 +13,7 @@ public class Repl {
 
   public void run(Scanner in, PrintStream out) {
 
-    //In an infinite loop
+    // In an infinite loop
     // read the line: if it is "exit" or empty then break the loop
     // otherwise, ask the agent and print the answer
     // you can use in.nextLine() to read a line and out.println() to print a line
