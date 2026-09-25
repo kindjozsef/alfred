@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
 import ro.msg4banking.gateway.vo.Message;
+import ro.msg4banking.gateway.vo.ModelResponse;
 
 public class LlmClient {
 
@@ -30,5 +31,13 @@ public class LlmClient {
     throw new UnsupportedOperationException(
         "Step 1: POST a ChatRequest to {base-url}/chat/completions"
             + " and return the message of the first choice");
+  }
+
+  public ModelResponse models() {
+    return http.get()
+        .uri(config.baseUrl() + "/models")
+        .header("Authorization", "Bearer " + config.apiKey())
+        .retrieve()
+        .body(ModelResponse.class);
   }
 }

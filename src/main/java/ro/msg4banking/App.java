@@ -12,13 +12,22 @@ import ro.msg4banking.gateway.LlmClient;
     description = "A tiny coding agent that works on the project in --workdir.")
 public class App implements Callable<Integer> {
 
-  @CommandLine.Parameters(index = "0", description = "What you want to ask alfred.")
+  @CommandLine.Parameters(index = "0", arity = "0..1", description = "What you want to ask alfred.")
   private String task;
+
+  @CommandLine.Option(
+      names = {"-m", "--models"},
+      description = "List all available models")
+  private boolean showModels;
 
   @Override
   public Integer call() {
     Agent agent = new Agent(new LlmClient(Config.load()));
-    System.out.println(agent.ask(task));
+    if (showModels) {
+      System.out.println(agent.listModels());
+    } else {
+      System.out.println(agent.ask(task));
+    }
     return 0;
   }
 

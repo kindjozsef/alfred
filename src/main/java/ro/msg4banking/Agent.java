@@ -3,6 +3,7 @@ package ro.msg4banking;
 import java.util.List;
 import ro.msg4banking.gateway.LlmClient;
 import ro.msg4banking.gateway.vo.Message;
+import ro.msg4banking.gateway.vo.ModelResponse;
 
 public class Agent {
 
@@ -18,5 +19,9 @@ public class Agent {
   public String ask(String question) {
     List<Message> messages = List.of(Message.system(SYSTEM_PROMPT), Message.user(question));
     return llm.chat(messages).content();
+  }
+
+  public ModelResponse listModels() {
+    return llm.models();
   }
 }
