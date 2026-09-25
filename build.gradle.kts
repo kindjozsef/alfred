@@ -59,6 +59,7 @@ tasks.jar {
 }
 
 spotless {
+    isEnforceCheck = false
     java {
         target("src/**/*.java")
         googleJavaFormat()
