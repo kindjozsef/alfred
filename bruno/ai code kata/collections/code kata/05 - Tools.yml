@@ -29,7 +29,8 @@ http:
               }
             }
           }
-        ]
+        ],
+        "reasoning_effort": "none"
       }
   auth: inherit
 

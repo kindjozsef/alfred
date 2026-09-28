@@ -13,7 +13,8 @@ http:
         "model": "{{model}}",
         "messages": [
           { "role": "user", "content": "Hi! My name is Juergen!" }
-        ]
+        ],
+        "n":2
       }
   auth: inherit
 

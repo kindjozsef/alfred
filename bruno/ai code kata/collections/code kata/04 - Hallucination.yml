@@ -10,11 +10,11 @@ http:
     type: json
     data: |-
       {
-        "model": "{{model}}",
+        "model": "gpt-3.5-turbo",
         "messages": [
           {
             "role": "user",
-            "content": "Refactor the calculateTotal in the OrderService.java"
+            "content": " Give me the content of the OrderService.java file"
           }
         ]
       }
