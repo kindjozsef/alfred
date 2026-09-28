@@ -23,7 +23,7 @@ public class App implements Callable<Integer> {
   @CommandLine.Option(
       names = {"-w", "--workdir"},
       description = "The project alfred works on. Default: ${DEFAULT-VALUE}")
-  private Path workdir = Path.of("../refactorme");
+  private Path workdir = Path.of("./");
 
   @Override
   public Integer call() {
