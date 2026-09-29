@@ -20,10 +20,15 @@ class AgentMemoryTest {
     agent.ask("What is my name?");
 
     verify(
-        1,
-        postRequestedFor(urlEqualTo("/chat/completions"))
-            .withRequestBody(containing("My name is Jozsef."))
-            .withRequestBody(containing("Hi Jozsef!"))
-            .withRequestBody(containing("What is my name?")));
+      2,
+      postRequestedFor(urlEqualTo("/chat/completions"))
+        .withRequestBody(containing("My name is Jozsef.")));
+
+    verify(
+      1,
+      postRequestedFor(urlEqualTo("/chat/completions"))
+        .withRequestBody(containing("My name is Jozsef."))
+        .withRequestBody(containing("Hi Jozsef!"))
+        .withRequestBody(containing("What is my name?")));
   }
 }
